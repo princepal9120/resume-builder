@@ -57,93 +57,84 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Welcome back
-          </h1>
-          <p className="text-sm text-muted-foreground">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="w-full max-w-md rounded-xl border border-border bg-card p-8 shadow-md">
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-semibold">Welcome back</h1>
+          <p className="text-sm text-muted-foreground mt-1">
             Enter your email and password to sign in to your account
           </p>
         </div>
 
-        <div className="grid gap-6">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="name@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="••••••••"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Signing in..." : "Sign in"}
-              </Button>
-            </form>
-          </Form>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="name@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <Separator className="w-full" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
-              </span>
-            </div>
-          </div>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="••••••••" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline" disabled={isLoading}>
-              <Github className="mr-2 h-4 w-4" />
-              Github
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-            <Button variant="outline" disabled={isLoading}>
-              <Mail className="mr-2 h-4 w-4" />
-              Google
-            </Button>
-          </div>
+          </form>
+        </Form>
+
+        <div className="flex items-center space-x-4 my-6">
+          <Separator className="flex-1" />
+          <span className="text-xs text-muted-foreground uppercase bg-card px-2">
+            Or continue with
+          </span>
+          <Separator className="flex-1" />
         </div>
 
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <div className="grid grid-cols-2 gap-4">
+          <Button variant="outline" disabled={isLoading}>
+            <Github className="mr-2 h-4 w-4" />
+            Github
+          </Button>
+          <Button variant="outline" disabled={isLoading}>
+            <Mail className="mr-2 h-4 w-4" />
+            Google
+          </Button>
+        </div>
+
+        <p className="mt-6 text-center text-sm text-muted-foreground">
           <Link
             href="/auth/reset-password"
-            className="hover:text-brand underline underline-offset-4"
+            className="underline underline-offset-4 hover:text-primary"
           >
             Forgot your password?
           </Link>
         </p>
 
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="mt-2 text-center text-sm text-muted-foreground">
           Don't have an account?{" "}
           <Link
             href="/auth/signup"
-            className="hover:text-brand underline underline-offset-4"
+            className="underline underline-offset-4 hover:text-primary"
           >
             Sign up
           </Link>

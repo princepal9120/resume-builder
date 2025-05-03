@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,15 +59,19 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Button
-            variant="ghost"
-            className="text-[#f1f1f1] hover:text-[#6366f1]"
-          >
-            Log in
-          </Button>
-          <Button className="bg-[#6366f1] hover:bg-[#6366f1]/90 text-white">
-            Sign up
-          </Button>
+          <Link href={"/login"}>
+            <Button
+              variant="ghost"
+              className="text-[#f1f1f1] hover:text-[#6366f1]"
+            >
+              Log in
+            </Button>
+          </Link>
+          <Link href={"/signup"}>
+            <Button className="bg-[#6366f1] hover:bg-[#6366f1]/90 text-white">
+              Sign up
+            </Button>
+          </Link>
           <Button
             variant="ghost"
             size="icon"
@@ -125,15 +130,20 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-2 border-t border-gray-800">
-              <Button
-                variant="ghost"
-                className="text-[#f1f1f1] hover:text-[#6366f1] justify-center"
-              >
-                Log in
-              </Button>
-              <Button className="bg-[#6366f1] hover:bg-[#6366f1]/90 text-white justify-center">
-                Sign up
-              </Button>
+              <Link href={"/login"}>
+                {" "}
+                <Button
+                  variant="ghost"
+                  className="text-[#f1f1f1] hover:text-[#6366f1] justify-center"
+                >
+                  Log in
+                </Button>
+              </Link>
+              <Link href={"/signup"}>
+                <Button className="bg-[#6366f1] hover:bg-[#6366f1]/90 text-white justify-center">
+                  Sign up
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
