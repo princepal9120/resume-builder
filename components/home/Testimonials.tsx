@@ -85,7 +85,7 @@ export default function Testimonials() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextTestimonial();
-    }, 8000);
+    }, 3000);
     
     return () => clearInterval(interval);
   }, [nextTestimonial]);
